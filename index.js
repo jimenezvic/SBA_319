@@ -9,6 +9,9 @@ const playersRoutes = require('./routes/players')
 const Player =  require('./models/player')
 const initializeForms = require('./db/form')
 
+app.set('views', __dirname + '/views');
+app.set('view engine', 'jsx');
+app.engine('jsx', require('express-react-views').createEngine());
 
 //Midlleware
 app.use(express.json())
