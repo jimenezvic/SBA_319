@@ -1,14 +1,17 @@
 const mongoose = require('mongoose')
 
-const config =() =>{
+const config = () =>{
     try{
-        mongoose.connect(process.env.mongo_uri);
-        mongoose.connection.once("open", () =>{
+          mongoose.connect(process.env.MONGO_URI,{
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        });
+        mongoose.connection.once('open', () =>{
             console.log("Connected to the Data Base program")
-        })
+        });
     } catch (err){
-        console.log(`You\'re having the following errors: ${err}`)
+        console.log(`Youre having the following errors: ${err}`)
     }
-}
+};
 
 module.exports = config;

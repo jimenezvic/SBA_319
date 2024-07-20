@@ -27,6 +27,7 @@ router.post('/', async (req,res)=>{
     try{
         const newPlayer = await Player.create(req.body)
         res.json(newPlayer)
+        res.status(201).json(newPlayer)
     } catch(err){
         res.status(500).json({message:err.message});
     }
