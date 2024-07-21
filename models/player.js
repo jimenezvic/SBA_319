@@ -38,6 +38,6 @@ const playerSchema = new mongoose.Schema({
         liabilityWaiver: String
 
 })
-const Player = mongoose.model('players', playerSchema)
+const Player = mongoose.model("Player", playerSchema)
 
 module.exports = Player;
