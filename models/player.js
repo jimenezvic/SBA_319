@@ -1,30 +1,7 @@
 const mongoose = require('mongoose')
 
-const playerSchema = new mongoose.Schema({
-    quickForm:{
-        name:{
-            type: String
-        },
-        positions:{
-            type: String
-        },
-        age:{
-            type: String
-        },
-        consent:{
-            type: Boolean,
-            required: true
-        },
-        medicalWaiver:{
-            type: Boolean,
-            required: true
-        },
+const completeFormSchema = new mongoose.Schema({
 
-        liabilityWaiver:{
-            type: Boolean,
-            required: true
-        }
-    },
     name:{
         type: String,
         required: true
@@ -41,27 +18,38 @@ const playerSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-        number:{
-            type: String,
-            required: true
+    number:{
+        type: String,
+        required: true
+    }, 
+    email:{
+        type: String,
+    },
+    position:{
+        type: String,
+        required: true
+    },
+    consent:{
+        type: Boolean,
+        required: true
+    },
+    medicalWaiver:{
+        type: Boolean,
+        required: true
         }, 
-        email:{
-            type: String,
-        },
-        position:{
-            type: String,
-            required: true
-        },
-        health:{
-            emergencyContact: String,
-            relationship: String,
-            phone: String
-        },
-        consent: String,
-        medicalWaiver: String,
-        liabilityWaiver: String
-
+    liabilityWaiver:{
+        type: Boolean,
+        required: true
+    },
+    health:{
+        emergencyContact: String,
+        relationship: String,
+        phone: String
+    },
 })
-const Player = mongoose.model("Player", playerSchema)
 
-module.exports = Player;
+
+const CompletePlayer = mongoose.model("CompletePlayer", completeFormSchema)
+
+
+module.exports = CompletePlayer;

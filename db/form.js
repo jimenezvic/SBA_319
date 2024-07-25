@@ -1,16 +1,20 @@
-const playersRegistration = [
+const playerRegistrationQuick = [
+    {
+        name:"$",
+        position:"$",
+        age:"$",
+        consent:"$",
+        medicalWaiver:"$",
+        liabilityWaiver:"$"
+    }
+]
 
 
 
+
+const playerRegistrationComplete = [
     {   
-        quickForm:{
-        name:"#",
-        positions:"#",
-        age:"#",
-        consent:"#",
-        medicalWaiver:"#",
-        liabilityWaiver:"#",
-        },
+
         name: "#",
         birth: "#", 
         gender: "#", 
@@ -18,22 +22,16 @@ const playersRegistration = [
         number:"#", 
         email:"#",
         position:"#",
+        consent:"#",
+        medicalWaiver:"#",
+        liabilityWaiver:"#",
         health:{
             emergencyContact:"#",
             relationship:"#",
             phone:""
-        },
+        }
     
-        consent:"#",
-        medicalWaiver:"#",
-        liabilityWaiver:"#"
-    }
-        
 
+}];
 
-
-
-
-];
-
-module.exports = playersRegistration
+module.exports = {playerRegistrationQuick, playerRegistrationComplete}

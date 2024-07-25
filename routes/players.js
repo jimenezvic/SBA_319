@@ -1,10 +1,11 @@
 const express = require('express')
 const router = express.Router()
-const Player = require('../models/player')
+const QuickPlayer = require('../models/quickPlayer')
+const CompletePlayer = require('../models/player')
 
 //Index get all 
 router.get('/', async (req,res)=>{
-    const allPlayers = await Player.find({})
+    const allPlayers = await CompletePlayer.find({})
     res.json(allPlayers)
 })
 
@@ -12,10 +13,10 @@ router.get('/', async (req,res)=>{
 router.get('/player/:name', async (req,res)=>{
     try{
 
-        const onePlayer = await Player.findOne({name: req.params.name});
+        const onePlayer = await CompletePlayer.findOne({name: req.params.name});
         console.log(onePlayer)
         if(!onePlayer){
-            return res.status(404).json({message: 'Player not found'})
+            return res.status(404).json({message: 'CompletePlayer not found'})
 
         }
         res.json(onePlayer)
@@ -24,14 +25,22 @@ router.get('/player/:name', async (req,res)=>{
     }
   
 })
-
+//Get the Quick form
+router.get('/quick', async (req, res)=>{
+    try{
+        const theQuick = await QuickPlayer.find({})
+        res.json(theQuick)
+    }catch(err){
+        res.status(500).json({message:err.message})
+    }
+})
 
 
 //Get specific data
 router.get('/:position' , async (req, res)=>{
     try{
         const position = req.params.position;
-        const playersPosition = await Player.aggregate([
+        const playersPosition = await CompletePlayer.aggregate([
             {$match:{position: position}},
             {$project:{_id: 0, name:1,gender:1}}
         ]);
@@ -44,27 +53,38 @@ router.get('/:position' , async (req, res)=>{
 
 
 
-//Creating a new Player
+//Creating a new CompletePlayer
 router.post('/', async (req,res)=>{
     try{
-        const newPlayer = await Player.create(req.body)
+        const newPlayer = await CompletePlayer.create(req.body)
         res.json(newPlayer)
-        res.status(201).json(newPlayer)
+        // res.status(201).json(newPlayer)
     } catch(err){
         res.status(500).json({message:err.message});
     }
     
 })
 
+//Creating a new Form
+router.post('/quickform', async (req,res)=>{
+    try{
+        const quickForm = await QuickPlayer.create(req.body)
+        res.json(quickForm)
+    }catch(err){
+        res.status(500).json({message:err.message});
+
+    }
+})
+
 //Update -PUT/PATCH
 router.put('/:name', async (req,res)=>{
     try{
-        const updatePlayer = await Player.findOneAndUpdate({name:req.params.name},
+        const updatePlayer = await CompletePlayer.findOneAndUpdate({name:req.params.name},
             req.body,
             {new: true}
         );
         if(!updatePlayer){
-            return res.status(404).json({message: 'Player not found'})
+            return res.status(404).json({message: 'CompletePlayer not found'})
         }
         res.json(updatePlayer)
     }catch(err){

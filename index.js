@@ -7,7 +7,10 @@ config();
 
 const playersRoutes = require('./routes/players');
 const Player =  require('./models/player');
-const playersRegistration = require('./db/form');
+
+const playerRegistrationComplete = require('./db/form');
+const playerRegistrationQuick =  require('./db/form')
+
 const router = require('./routes/players');
 
 
