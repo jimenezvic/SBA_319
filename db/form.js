@@ -2,7 +2,16 @@ const playersRegistration = [
 
 
 
-    {   name: "#",
+    {   
+        quickForm:{
+        name:"#",
+        positions:"#",
+        age:"#",
+        consent:"#",
+        mediacalWaiver:"#",
+        liabilityWaiver:"#",
+        },
+        name: "#",
         birth: "#", 
         gender: "#", 
         address: "#",

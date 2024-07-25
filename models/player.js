@@ -1,6 +1,30 @@
 const mongoose = require('mongoose')
 
 const playerSchema = new mongoose.Schema({
+    quickForm:{
+        name:{
+            type: String
+        },
+        positions:{
+            type: String
+        },
+        age:{
+            type: String
+        },
+        consent:{
+            type: Boolean,
+            required: true
+        },
+        mediacalWaiver:{
+            type: Boolean,
+            required: true
+        },
+
+        liabilityWaiver:{
+            type: Boolean,
+            required: true
+        }
+    },
     name:{
         type: String,
         required: true
