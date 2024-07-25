@@ -15,7 +15,7 @@ const playerSchema = new mongoose.Schema({
             type: Boolean,
             required: true
         },
-        mediacalWaiver:{
+        medicalWaiver:{
             type: Boolean,
             required: true
         },
@@ -58,7 +58,7 @@ const playerSchema = new mongoose.Schema({
             phone: String
         },
         consent: String,
-        mediacalWaiver: String,
+        medicalWaiver: String,
         liabilityWaiver: String
 
 })

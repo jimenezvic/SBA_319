@@ -8,7 +8,7 @@ const playersRegistration = [
         positions:"#",
         age:"#",
         consent:"#",
-        mediacalWaiver:"#",
+        medicalWaiver:"#",
         liabilityWaiver:"#",
         },
         name: "#",
