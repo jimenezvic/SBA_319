@@ -7,7 +7,7 @@ const config = () =>{
             
         });
         mongoose.connection.once('open', () =>{
-            console.log("Connected to the Data Base program")
+            console.log("Connected to MongoDB")
         });
     } catch (err){
         console.log(`Youre having the following errors: ${err}`)

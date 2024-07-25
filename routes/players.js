@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Player = require('../models/player')
+
 //Index get all 
 router.get('/', async (req,res)=>{
     const allPlayers = await Player.find({})
@@ -8,19 +9,40 @@ router.get('/', async (req,res)=>{
 })
 
 //Getting a single player
-router.get('/:name', async (req,res)=>{
+router.get('/player/:name', async (req,res)=>{
     try{
+
         const onePlayer = await Player.findOne({name: req.params.name});
+        console.log(onePlayer)
         if(!onePlayer){
             return res.status(404).json({message: 'Player not found'})
 
         }
-        res.json(onePlayer);
+        res.json(onePlayer)
     } catch(err){
-        res.status(500).json({message: err.message});
+        res.status(500).json({message: err.message})
     }
   
 })
+
+
+
+//Get specific data
+router.get('/:position' , async (req, res)=>{
+    try{
+        const position = req.params.position;
+        const playersPosition = await Player.aggregate([
+            {$match:{position: position}},
+            {$project:{_id: 0, name:1,gender:1}}
+        ]);
+        
+        res.json(playersPosition)
+    }catch(error){
+        res.status(500).json({message: 'Position not found'})
+    }
+})
+
+
 
 //Creating a new Player
 router.post('/', async (req,res)=>{
